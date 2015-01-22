@@ -2,12 +2,12 @@ Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/trusty64"
     config.vm.box_url = "ubuntu/trusty64"
 
-    config.vm.define :"Spikes.Kafka"
+    config.vm.define :"Spikes.Kafka.case03.kafka" do |Spikes.Kafka.case03.kafka|
 
     config.vm.synced_folder ".", "/home/vagrant/code"
 
     config.vm.provider :virtualbox do |vb|
-        vb.name = "Spikes.Kafka"
+        vb.name = "Spikes.Kafka.case01"
         vb.customize ["modifyvm", :id, "--memory", "2048"]
     end
 
@@ -15,7 +15,6 @@ Vagrant.configure("2") do |config|
         fabric.fabfile_path = "fabfile.py"
         fabric.tasks = ["ubuntu.update", "nodejs.install", "nodejs.tools.install", "kafka.full:configuration=fabric_scripts/configuration/kafka", "ubuntu.cleanup"]
     end
-
 
 #  config.vm.define "zookeeper" do |zookeeper|
 #    zookeeper.vm.network :private_network, ip: "192.168.86.5"
@@ -32,6 +31,4 @@ Vagrant.configure("2") do |config|
 #    end
 #    brokerOne.vm.provision "shell", path: "vagrant/broker.sh", :args => "1"
 #  end
-
-
 end
