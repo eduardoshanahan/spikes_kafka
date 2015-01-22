@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision :fabric do |fabric|
         fabric.fabfile_path = "fabfile.py"
-        fabric.tasks = ["ubuntu.update", "nodejs.install", "nodejs.tools.install"]
+        fabric.tasks = ["ubuntu.update", "nodejs.install", "nodejs.tools.install", "kafka.full:configuration=fabric_scripts/configuration/kafka", "ubuntu.cleanup"]
     end
 
 

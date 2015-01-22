@@ -2,3 +2,4 @@
 npm-debug.log
 .vagrant
 *.pyc
+.DS_Store

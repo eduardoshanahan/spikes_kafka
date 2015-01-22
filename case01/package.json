@@ -1,0 +1,15 @@
+{
+  "name": "spikes-kafka-case01",
+  "version": "0.1.0",
+  "description": "Some experiments using Kafka",
+  "main": "server.js",
+  "dependencies": {
+    "kafka-node": "^0.2.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eduardo Shanahan",
+  "repository": "https://github.com/eduardoshanahan/spikes_kafka"
+}
