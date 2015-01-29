@@ -11,16 +11,13 @@ var kafka = require('kafka-node'),
     {
       autoCommit: false
     }
-  ),
-  payloads = [
-      { topic: 'test', messages: ['node message '+ new Date()] }
-  ];
+  );
 
 consumer.on('message', function (message) {
   console.log('message received');
     console.log(message);
 });
 
-consumer.on('error', function(message){
+consumer.on('error', function(err){
   console.log('the consumer had an error', err);
-})
+});
