@@ -1,7 +1,7 @@
 'use strict';
 
 var kafka = require('kafka-node'),
-  client = new kafka.Client('192.168.86.5:2181', 'case04'),
+  client = new kafka.Client('SpikesKafkaCase04Kafka:2181', 'case04'),
   Consumer = kafka.Consumer,
   consumer = new Consumer(
     client,
