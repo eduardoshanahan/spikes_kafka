@@ -1,4 +1,5 @@
 # Case 05
 
-Using kafka-node. It needs to have the topic 'test' already created
+* Configure Kafka
+* Create a Restify API
 

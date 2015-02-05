@@ -4,7 +4,8 @@
   "description": "Make kafka hit some performance",
   "main": "producer.js",
   "dependencies": {
-    "kafka-node": "^0.2.15"
+    "kafka-node": "^0.2.15",
+    "restify": "^2.8.5"
   },
   "devDependencies": {},
   "scripts": {
