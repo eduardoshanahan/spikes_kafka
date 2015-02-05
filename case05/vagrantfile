@@ -1,0 +1,33 @@
+Vagrant.configure("2") do |config|
+    config.vm.box = "ubuntu/trusty64"
+    config.vm.box_url = "ubuntu/trusty64"
+
+    config.vm.define "SpikesKafkaCase05Kafka" do |kafka|
+        kafka.vm.hostname = "SpikesKafkaCase05Kafka"
+        kafka.vm.network "private_network", ip: "192.168.86.20"
+        kafka.vm.network :forwarded_port, guest: 22, host: 2210, id: "ssh"
+        kafka.vm.provider :virtualbox do |vb|
+            vb.name = "SpikesKafkaCase05Kafka"
+            vb.customize ["modifyvm", :id, "--memory", "2048"]
+        end
+        kafka.vm.provision :fabric do |fabric|
+            fabric.fabfile_path = "../fabfile.py"
+            fabric.tasks = ["ubuntu.update", "kafka.full:configuration=../fabric_scripts/configuration/kafka", "ubuntu.cleanup"]
+        end
+    end
+
+    config.vm.define "SpikesKafkaCase05Servers" do |servers|
+        servers.vm.hostname = "SpikesKafkaCase05Servers"
+        servers.vm.network "private_network", ip: "192.168.86.21"
+        servers.vm.network :forwarded_port, guest: 22, host: 2211, id: "ssh"
+        servers.vm.synced_folder ".", "/home/vagrant/code"
+        servers.vm.provider :virtualbox do |vb|
+            vb.name = "SpikesKafkaCase05Servers"
+            vb.customize ["modifyvm", :id, "--memory", "512"]
+        end
+        servers.vm.provision :fabric do |fabric|
+            fabric.fabfile_path = "../fabfile.py"
+            fabric.tasks = ["ubuntu.update", "ubuntu.hosts.add:ip=192.168.86.20,name=SpikesKafkaCase05Kafka", "nodejs.install", "nodejs.tools.install", "ubuntu.cleanup"]
+        end
+    end    
+end
