@@ -1,0 +1,16 @@
+{
+  "name": "spikes-kafka-case06-servers",
+  "version": "0.1.0",
+  "description": "Make kafka hit some performance",
+  "main": "server.js",
+  "dependencies": {
+    "kafka-node": "^0.2.15",
+    "restify": "^2.8.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eduardo Shanahan",
+  "repository": "https://github.com/eduardoshanahan/spikes_kafka"
+}

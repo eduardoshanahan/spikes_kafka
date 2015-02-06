@@ -6,3 +6,5 @@ I am doing a few experiments with Kafka, in particular from Node
 * case02: create topics
 * case03: split machines between kafka and node
 * case04: split the servers between producers and consumers
+* case05: load test
+* case06: load test from three different machines

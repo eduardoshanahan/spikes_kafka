@@ -1,0 +1,15 @@
+kafka:
+  ip: '192.168.6.20'
+  name: 'SpikesKafkaCase06Kafka'
+  ssh_port: 2260
+  memory: '2048'
+servers:
+  ip: '192.168.6.21'
+  name: 'SpikesKafkaCase06Servers'
+  ssh_port: 2261
+  memory: '512'
+load:
+  ip: '192.168.6.22'
+  name: 'SpikesKafkaCase06Load'
+  ssh_port: 2262
+  memory: '512'
