@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
         end
         kafka.vm.provision :fabric do |fabric|
             fabric.fabfile_path = "../fabfile.py"
-            fabric.tasks = ["ubuntu.update", "kafka.full:configuration=../fabric_scripts/configuration/kafka", "ubuntu.cleanup"]
+            fabric.tasks = ["ubuntu.packages.update", "kafka.full:configuration=../fabric_scripts/configuration/kafka", "ubuntu.packages.cleanup"]
         end
     end
 
@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
         servers.vm.provision :fabric do |fabric|
             fabric.fabfile_path = "../fabfile.py"
             hosts_provision = "ubuntu.hosts.add:ip=" + vagrant_config['kafka']['ip'] + ",name=" + vagrant_config['kafka']['name']
-            fabric.tasks = ["ubuntu.update", hosts_provision, "java.oracle.jdk.install", "development.gplusplus.install", "nodejs.install", "nodejs.tools.install", "ubuntu.cleanup"]
+            fabric.tasks = ["ubuntu.packages.update", hosts_provision, "tools.gplusplus.install", "nodejs.install", "nodejs.tools.install", "ubuntu.packages.cleanup"]
         end
     end
 
@@ -50,7 +50,7 @@ Vagrant.configure("2") do |config|
         end
         load.vm.provision :fabric do |fabric|
             fabric.fabfile_path = "../fabfile.py"
-            fabric.tasks = ["ubuntu.update", "python.locust.full", "ubuntu.cleanup"]
+            fabric.tasks = ["ubuntu.packages.update", "python.locust.full", "ubuntu.packages.cleanup"]
         end
     end
 

@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
         end
         kafka.vm.provision :fabric do |fabric|
             fabric.fabfile_path = "../fabfile.py"
-            fabric.tasks = ["ubuntu.update", "kafka.full:configuration=../fabric_scripts/configuration/kafka", "ubuntu.cleanup"]
+            fabric.tasks = ["ubuntu.packages.update", "kafka.full:configuration=../fabric_scripts/configuration/kafka", "ubuntu.packages.cleanup"]
         end
     end
 
@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
         end
         servers.vm.provision :fabric do |fabric|
             fabric.fabfile_path = "../fabfile.py"
-            fabric.tasks = ["ubuntu.update", "ubuntu.hosts.add:ip=192.168.86.10,name=SpikesKafkaCase04Kafka", "nodejs.install", "nodejs.tools.install", "ubuntu.cleanup"]
+            fabric.tasks = ["ubuntu.packages.update", "ubuntu.hosts.add:ip=192.168.86.10,name=SpikesKafkaCase04Kafka", "nodejs.install", "nodejs.tools.install", "ubuntu.packages.cleanup"]
         end
-    end    
+    end
 end
