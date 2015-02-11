@@ -2,11 +2,8 @@ from locust import HttpLocust, TaskSet, task
 
 class UserBehavior(TaskSet):
     @task
-    def get_first(self):
-        self.client.get("/first")
-    @task
-    def get_second(self):
-        self.client.get("/second")
+    def get_no_message(self):
+        self.client.get("/getnomessage")
 
 class WebsiteUser(HttpLocust):
     task_set = UserBehavior

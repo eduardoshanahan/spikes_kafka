@@ -14,17 +14,17 @@ server.use(restify.bodyParser());
 server.use(restify.queryParser());
 server.use(restify.fullResponse());
 
-server.get('/first', apimessage.getFirst);
-// curl -isS http://localhost:3000/first
+server.get('/getnomessage', apimessage.getNoMessage);
+// curl -isS http://192.168.6.21:3000/getnomessage
 
-server.get('/second', apimessage.getSecond);
-// curl -isS http://localhost:3000/second
+server.get('/getnotwaited', apimessage.getNotWaited);
+// curl -isS http://192.168.6.21:3000/getnotwaited
 
-server.post('/first', apimessage.postFirst);
-// curl -X POST -isS -H "Content-Type:application/json" http://localhost:3000/first
+server.post('/sendnotwaited', apimessage.postSendNotWaited);
+// curl -X POST -isS -H "Content-Type:application/json" http://192.168.6.21:3000/sendnotwaited
 
-server.post('/second', apimessage.postSecond);
-// curl -X POST -isS -H "Content-Type:application/json" http://localhost:3000/second
+server.post('/sendandwait', apimessage.postSendAndWait);
+// curl -X POST -isS -H "Content-Type:application/json" http://192.168.6.21:3000/sendandwait
 
 function start(portNumber) {
   server.listen(
@@ -35,5 +35,5 @@ function start(portNumber) {
     })
 };
 
-//PORT=3004 nodemon server.js &
+//PORT=3000 nodemon server.js &
 start(process.env.PORT || configuration.apiPort);
