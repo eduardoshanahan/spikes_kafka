@@ -2,7 +2,10 @@
 
 const configuration = require('./configuration').configuration;
 const restify = require('restify');
-const apimessage = require('./routes/apimessage');
+const getNoKafka = require('./routes/getnokafka');
+const getWithKafka = require('./routes/getwithkafka');
+const postAndWaitForKafka = require('./routes/postandwaitforkafka');
+const postAndAbandon = require('./routes/postandabandon');
 
 const server = restify.createServer(
   {
@@ -14,17 +17,17 @@ server.use(restify.bodyParser());
 server.use(restify.queryParser());
 server.use(restify.fullResponse());
 
-server.get('/getnomessage', apimessage.getNoMessage);
-// curl -isS http://192.168.6.21:3000/getnomessage
+server.get('/getnokafka', getNoKafka.get);
+// curl -isS http://192.168.6.21:3000/getnokafka
 
-server.get('/getnotwaited', apimessage.getNotWaited);
-// curl -isS http://192.168.6.21:3000/getnotwaited
+server.get('/getwithkafka', getWithKafka.get);
+// curl -isS http://192.168.6.21:3000/getwithkafka
 
-server.post('/sendnotwaited', apimessage.postSendNotWaited);
-// curl -X POST -isS -H "Content-Type:application/json" http://192.168.6.21:3000/sendnotwaited
+server.post('/postandwaitforkafka', postAndWaitForKafka.post);
+// curl -X POST -isS -H "Content-Type:application/json" http://192.168.6.21:3000/postandwaitforkafka
 
-server.post('/sendandwait', apimessage.postSendAndWait);
-// curl -X POST -isS -H "Content-Type:application/json" http://192.168.6.21:3000/sendandwait
+server.post('/postandabandon', postAndAbandon.post);
+// curl -X POST -isS -H "Content-Type:application/json" http://192.168.6.21:3000/postandabandon
 
 function start(portNumber) {
   server.listen(
