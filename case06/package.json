@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "kafka-node": "^0.2.15",
+    "node-uuid": "^1.4.2",
     "restify": "^2.8.5"
   },
   "devDependencies": {},

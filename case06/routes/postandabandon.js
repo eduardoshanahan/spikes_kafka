@@ -2,9 +2,10 @@
 
 const restify = require('restify');
 const util = require('util');
+const uuid = require('node-uuid');
 const kafka = require('kafka-node');
 const Client = kafka.Client;
-const client = new Client('SpikesKafkaCase05Kafka:2181', 'producer');
+const client = new Client('SpikesKafkaCase06Kafka:2181', 'producer');
 const Producer = kafka.Producer;
 const producer = new Producer(client);
 
@@ -33,8 +34,17 @@ function post (req, res, next) {
   }
   console.log(log);
 
+  let message = {
+    content: 'node message for postAndAbandon',
+    id: uuid.v4(),
+    date: new Date()
+  };
+
   let payloads = [
-        { topic: 'test', messages: ['node message for postAndAbandon'+ new Date()] }
+        {
+          topic: 'test',
+          messages: [message],
+        }
     ];
 
   producer.send(payloads, function (err, data) {
