@@ -42,7 +42,7 @@ server.post('/postandabandon', postAndAbandon.post);
 // curl -X POST -isS -H "Content-Type:application/json" http://192.168.6.21:3000/postandabandon
 
 server.get('/getwithkafka', getWithKafka.get);
-// curl -isS http://192.168.6.21:3000/getwithkafka
+// curl -isS http://192.168.6.21:3000/getwithkafka?id=cb54e4d9-dd23-4681-bab5-65a75fc70ebb
 
 server.post('/postandwaitforkafka', postAndWaitForKafka.post);
 // curl -X POST -isS -H "Content-Type:application/json" http://192.168.6.21:3000/postandwaitforkafka

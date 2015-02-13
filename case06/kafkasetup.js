@@ -1,9 +1,10 @@
 'use strict';
 
 const kafka = require('kafka-node');
-const Producer = kafka.Producer;
-const client = new kafka.Client('SpikesKafkaCase06Kafka:2181', 'kafkaSetup');
-const producer = new Producer(client);
+const Client = kafka.Client;
+const client = new Client('SpikesKafkaCase06Kafka:2181', 'kafkaSetup');
+const HighLevelProducer = kafka.HighLevelProducer;
+const producer = new HighLevelProducer(client);
 
 client.on('error', function (err) {
   let log = {

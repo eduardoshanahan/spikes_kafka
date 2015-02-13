@@ -5,8 +5,8 @@ const util = require('util');
 const kafka = require('kafka-node');
 const Client = kafka.Client;
 const client = new Client('SpikesKafkaCase06Kafka:2181', 'getWithKafka');
-const Consumer = kafka.Consumer;
-const consumer = new Consumer(
+const HighLevelConsumer = kafka.HighLevelConsumer;
+const consumer = new HighLevelConsumer(
     client,
     [
       { topic: 'test', partition: 0 }
@@ -38,7 +38,8 @@ consumer.on('error', function(err){
 function get (req, res, next) {
   let log = {
     message: 'call received for get in getWithKafka',
-    date: new Date()
+    date: new Date(),
+    id: req.params.id
   }
   console.log(log);
 

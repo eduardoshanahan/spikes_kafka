@@ -6,8 +6,8 @@ const uuid = require('node-uuid');
 const kafka = require('kafka-node');
 const Client = kafka.Client;
 const client = new Client('SpikesKafkaCase06Kafka:2181', 'producer');
-const Producer = kafka.Producer;
-const producer = new Producer(client);
+const HighLevelProducer = kafka.HighLevelProducer;
+const producer = new HighLevelProducer(client);
 
 client.on('error', function (err) {
   let log = {
@@ -43,7 +43,7 @@ function post (req, res, next) {
   let payloads = [
         {
           topic: 'test',
-          messages: [message],
+          messages: [JSON.stringify(message)],
         }
     ];
 
