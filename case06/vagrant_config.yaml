@@ -1,15 +1,15 @@
 kafka:
-  ip: '192.168.6.20'
-  name: 'SpikesKafkaCase06Kafka'
+  ip: '192.168.1.2'
+  name: 'CVGKafka'
   ssh_port: 2260
   memory: '1270'
 servers:
-  ip: '192.168.6.21'
-  name: 'SpikesKafkaCase06Servers'
+  ip: '192.168.1.3'
+  name: 'CVGServers'
   ssh_port: 2261
   memory: '512'
 load:
-  ip: '192.168.6.22'
-  name: 'SpikesKafkaCase06Load'
+  ip: '192.168.1.4'
+  name: 'CVGLoad'
   ssh_port: 2262
   memory: '512'
