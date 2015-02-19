@@ -6,7 +6,7 @@ var kafka = require('kafka-node'),
   consumer = new Consumer(
     client,
     [
-      { topic: 'test', partition: 0 }
+      { topic: 'test' }
     ],
     {
       autoCommit: false
